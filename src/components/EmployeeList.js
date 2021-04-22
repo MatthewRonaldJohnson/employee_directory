@@ -1,4 +1,6 @@
 import EmployeeCard from "./employeeCard"
+import SortableAttribute from "./SortableAttributes"
+import "./sortCss.css"
 
 export default function EmployeeList(props) {
     return <ul className="list-group">
@@ -7,12 +9,8 @@ export default function EmployeeList(props) {
                 <div className="col-2">
                     <p>Image</p>
                 </div>
-                <div className="col-2">
-                    <p>First Name</p>
-                </div>
-                <div className="col-2">
-                    <p>Last Name</p>
-                </div>
+                <SortableAttribute handleClick={props.handleClick} dataKey="name.first" text="First Name" />
+                <SortableAttribute handleClick={props.handleClick} dataKey="name.last" text="Last Name" />
                 <div className="col-2">
                     <p>Phone</p>
                 </div>
@@ -25,7 +23,6 @@ export default function EmployeeList(props) {
             </div>
         </li>
         {props.employees.map(({ picture, name, phone, email, dob, id }) => {
-            const formattedDate = new Date(dob.date).toLocaleString('en-US')
             return <>
                 <EmployeeCard key={id.value} image={picture.thumbnail} fName={name.first} lName={name.last} phone={phone} email={email} date={dob.date.slice(0, -14)} />
             </>

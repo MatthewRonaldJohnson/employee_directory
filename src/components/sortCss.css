@@ -1,0 +1,17 @@
+.sortDown:after {
+    content: "";
+    position: relative;
+    left: 2px;
+    border: 8px solid transparent;
+    top: 10px;
+    border-top-color: silver;
+}
+
+.sortUp:after {
+    content: "";
+    position: relative;
+    left: 2px;
+    border: 8px solid transparent;
+    bottom: 10px;
+    border-bottom-color: silver;
+}

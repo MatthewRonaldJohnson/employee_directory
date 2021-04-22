@@ -10,8 +10,8 @@ class App extends React.Component {
     employees: [],
     searchParam: "",
     filterEmployees: [],
+    sortDirection: "sortDown",
     sortParam: "",
-    sortOrder: "Descending"
   };
 
   componentDidMount() {
@@ -30,17 +30,6 @@ class App extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
-    const sortedList = this.state.employees.sort((a,b)=> {
-      return this.state.sortOrder==="Descending"? 
-        b.name.first - a.name.first
-        : a.name.first - b.name.first
-    })
-    if (this.state.sortOrder !== prevState.sortOrder){
-      this.setState({...this.state, employees: sortedList, filterEmployees: sortedList})
-    }
-  }
-
   getEmployees = async () => {
     const { data } = await API.getUsers();
     this.setState({ ...this.state, employees: data.results, filterEmployees: data.results });
@@ -51,11 +40,10 @@ class App extends React.Component {
     this.setState({ ...this.state, searchParam: input });
   }
 
-  handleSortClick = (event)=>{
-    const input = event.target.textcontent;
-    if (this.state.sortOrder === "Descending") {this.setState({...this.state, sortOrder: "Ascending"})}
-    else this.setState({...this.state, sortOrder: "Descending"})
-    this.setState({...this.state, sortParam: input})
+  handleClick = ()=>{
+    //change class of clicked on attribute
+    //sort state.employess & filterEmployees 
+    console.log('click')
   }
 
   render() {
@@ -63,7 +51,7 @@ class App extends React.Component {
       <Header />
       <div className="container-fluid">
         <SearchBar handleInputChange={this.handleInputChange} />
-        <EmployeeList employees={this.state.searchParam.length ? this.state.filterEmployees : this.state.employees} />
+        <EmployeeList sortDirection={this.state.sortDirection} handleClick={this.handleClick} employees={this.state.searchParam.length ? this.state.filterEmployees : this.state.employees} />
       </div>
     </>
   }
