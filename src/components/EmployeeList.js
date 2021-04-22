@@ -1,7 +1,7 @@
 import EmployeeCard from "./employeeCard"
 
 export default function EmployeeList(props) {
-    return <ul className="list-group container-fluid">
+    return <ul className="list-group">
         <li className="list-group-item">
             <div className="row justify-content-between">
                 <div className="col-2">
