@@ -27,7 +27,7 @@ export default function EmployeeList(props) {
         {props.employees.map(({ picture, name, phone, email, dob, id }) => {
             const formattedDate = new Date(dob.date).toLocaleString('en-US')
             return <>
-                <EmployeeCard key={id.value} image={picture.thumbnail} fName={name.first} lName={name.last} phone={phone} email={email} date={formattedDate} />
+                <EmployeeCard key={id.value} image={picture.thumbnail} fName={name.first} lName={name.last} phone={phone} email={email} date={dob.date.slice(0, -14)} />
             </>
         })}
     </ul>
