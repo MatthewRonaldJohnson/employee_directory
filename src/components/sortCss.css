@@ -23,4 +23,5 @@
 .sortable {
     text-decoration: underline;
     color: blue;
+    user-select: none;
 }
