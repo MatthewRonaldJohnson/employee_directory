@@ -31,19 +31,22 @@ class App extends React.Component {
     }
 
     if (this.state.sortParam !== prevState.sortParam){
-      console.log('sortParam Changed')
-      //call sort employees
+      this.sortEmployees();
     }
 
     if (this.state.sortDirection !== prevState.sortDirection){
-      console.log('sortDirection Changed')
-      //call sort empoloyees
+      this.sortEmployees();
     }
 
   }
 
   sortEmployees = () => {
-    // const sortedEmployees = this.state.employees.sort()
+    const sortParamArr = this.state.sortParam.split('.');
+    const sortDirectionSwitch = this.state.sortDirection==="sortDown"? 1:-1;
+    const sortedEmployees = this.state.employees.sort((a,b) => {
+      return a[sortParamArr[0]][sortParamArr[1]] < b[sortParamArr[0]][sortParamArr[1]]? -1*sortDirectionSwitch: 1*sortDirectionSwitch;
+    })
+    this.setState({...this.state, employees: sortedEmployees})
   }
 
   getEmployees = async () => {
