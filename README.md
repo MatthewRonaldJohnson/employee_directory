@@ -1,8 +1,8 @@
 # Employee Directory
 
-## Deployed Link
+## [Deployed Link](https://infallible-roentgen-ff9a88.netlify.app/)
 
-This application is deployed at: ....
+This application is deployed with netlify at: https://infallible-roentgen-ff9a88.netlify.app/
 
 ## Functionality 
 
