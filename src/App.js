@@ -46,7 +46,10 @@ class App extends React.Component {
     const sortedEmployees = this.state.employees.sort((a,b) => {
       return a[sortParamArr[0]][sortParamArr[1]] < b[sortParamArr[0]][sortParamArr[1]]? -1*sortDirectionSwitch: 1*sortDirectionSwitch;
     })
-    this.setState({...this.state, employees: sortedEmployees})
+    const sortedFilteredEmployees = this.state.filterEmployees.sort((a,b) => {
+      return a[sortParamArr[0]][sortParamArr[1]] < b[sortParamArr[0]][sortParamArr[1]]? -1*sortDirectionSwitch: 1*sortDirectionSwitch;
+    })
+    this.setState({...this.state, employees: sortedEmployees, filterEmployees: sortedFilteredEmployees})
   }
 
   getEmployees = async () => {
