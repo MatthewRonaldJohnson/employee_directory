@@ -15,3 +15,12 @@
     bottom: 10px;
     border-bottom-color: silver;
 }
+
+.sortable:hover {
+    cursor: pointer;
+}
+
+.sortable {
+    text-decoration: underline;
+    color: blue;
+}

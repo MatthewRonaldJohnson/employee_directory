@@ -9,8 +9,20 @@ export default function EmployeeList(props) {
                 <div className="col-2">
                     <p>Image</p>
                 </div>
-                <SortableAttribute handleClick={props.handleClick} dataKey="name.first" text="First Name" />
-                <SortableAttribute handleClick={props.handleClick} dataKey="name.last" text="Last Name" />
+                <SortableAttribute
+                    sortParam={props.sortParam}
+                    sortDirection={props.sortDirection}
+                    handleClick={props.handleClick}
+                    dataKey="name.first"
+                    text="First Name"
+                />
+                <SortableAttribute
+                    sortParam={props.sortParam}
+                    sortDirection={props.sortDirection}
+                    handleClick={props.handleClick}
+                    dataKey="name.last"
+                    text="Last Name"
+                />
                 <div className="col-2">
                     <p>Phone</p>
                 </div>

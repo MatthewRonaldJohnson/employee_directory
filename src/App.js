@@ -5,6 +5,7 @@ import EmployeeList from "./components/EmployeeList";
 import SearchBar from "./components/SearchBar"
 import Header from "./components/Header"
 
+
 class App extends React.Component {
   state = {
     employees: [],
@@ -19,15 +20,30 @@ class App extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const filteredList = this.state.employees.filter((employee) => {
-      return employee.name.first.toLowerCase().includes(this.state.searchParam.toLowerCase()) 
-        || employee.name.last.toLowerCase().includes(this.state.searchParam.toLowerCase())
-        || employee.phone.includes(this.state.searchParam.toLowerCase())
-        || employee.email.toLowerCase().includes(this.state.searchParam.toLowerCase())
-    });
     if (this.state.searchParam !== prevState.searchParam) {
+      const filteredList = this.state.employees.filter((employee) => {
+        return employee.name.first.toLowerCase().includes(this.state.searchParam.toLowerCase())
+          || employee.name.last.toLowerCase().includes(this.state.searchParam.toLowerCase())
+          || employee.phone.includes(this.state.searchParam.toLowerCase())
+          || employee.email.toLowerCase().includes(this.state.searchParam.toLowerCase())
+      });
       this.setState({ ...this.state, filterEmployees: filteredList })
     }
+
+    if (this.state.sortParam !== prevState.sortParam){
+      console.log('sortParam Changed')
+      //call sort employees
+    }
+
+    if (this.state.sortDirection !== prevState.sortDirection){
+      console.log('sortDirection Changed')
+      //call sort empoloyees
+    }
+
+  }
+
+  sortEmployees = () => {
+    // const sortedEmployees = this.state.employees.sort()
   }
 
   getEmployees = async () => {
@@ -40,10 +56,12 @@ class App extends React.Component {
     this.setState({ ...this.state, searchParam: input });
   }
 
-  handleClick = ()=>{
-    //change class of clicked on attribute
-    //sort state.employess & filterEmployees 
-    console.log('click')
+  handleClick = async (event) => {
+    let sortDirectionValue = this.state.sortDirection;
+    if (event.target.dataset.key === this.state.sortParam){
+      sortDirectionValue = sortDirectionValue === "sortDown"? "sortUp":"sortDown";
+    }
+    await this.setState({ ...this.state, sortParam: event.target.dataset.key, sortDirection: sortDirectionValue })
   }
 
   render() {
@@ -51,7 +69,7 @@ class App extends React.Component {
       <Header />
       <div className="container-fluid">
         <SearchBar handleInputChange={this.handleInputChange} />
-        <EmployeeList sortDirection={this.state.sortDirection} handleClick={this.handleClick} employees={this.state.searchParam.length ? this.state.filterEmployees : this.state.employees} />
+        <EmployeeList sortDirection={this.state.sortDirection} sortParam={this.state.sortParam} handleClick={this.handleClick} employees={this.state.searchParam.length ? this.state.filterEmployees : this.state.employees} />
       </div>
     </>
   }
