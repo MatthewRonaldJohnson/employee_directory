@@ -14,4 +14,4 @@ A user can also click on either first or last name to sort the list by that para
 
 Below is a gif demostrating the functionality of the app.
 
-![Walkthrough Gif](https://github.com/MatthewRonaldJohnson/Buget-Tracker/blob/main/README-Assets/Budget%20Tracker%20Gif.gif?raw=true)
+![Walkthrough Gif](https://github.com/MatthewRonaldJohnson/employee_directory/blob/main/README_Assets/Walkthrough%20Gif.gif?raw=true)
