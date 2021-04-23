@@ -35,9 +35,7 @@ export default function EmployeeList(props) {
             </div>
         </li>
         {props.employees.map(({ picture, name, phone, email, dob, id }) => {
-            return <>
-                <EmployeeCard key={id.value} image={picture.thumbnail} fName={name.first} lName={name.last} phone={phone} email={email} date={dob.date.slice(0, -14)} />
-            </>
+            return <EmployeeCard key={id.value} image={picture.thumbnail} fName={name.first} lName={name.last} phone={phone} email={email} date={dob.date.slice(0, -14)} />
         })}
     </ul>
 }
